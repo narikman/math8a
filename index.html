@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра на математические уравнения</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Блок с командами -->
+    <div id="teams">
+        <div id="team1" class="team">Команда 1: <span id="score1">0</span> очков</div>
+        <div id="team2" class="team">Команда 2: <span id="score2">0</span> очков</div>
+        <div id="team3" class="team">Команда 3: <span id="score3">0</span> очков</div>
+    </div>
+
+    <!-- Главный блок игры -->
+    <div class="game">
+
+        <!-- Вопрос -->
+        <div id="question" class="question">Тут будет вопрос</div>
+
+        <!-- Мем для карточки -->
+        <div id="meme" style="display:none;">
+            <img id="memeImage" alt="Мем">
+        </div>
+
+        <!-- Таймер -->
+        <div id="timeLeft">Осталось времени: 90 секунд</div>
+
+        <!-- Кнопки для карточек -->
+        <div id="card-buttons">
+            <button onclick="drawCard(0)">Карточка 1</button>
+            <button onclick="drawCard(1)">Карточка 2</button>
+            <button onclick="drawCard(2)">Карточка 3</button>
+            <button onclick="drawCard(3)">Карточка 4</button>
+            <button onclick="drawCard(4)">Карточка 5</button>
+            <button onclick="drawCard(5)">Карточка 6</button>
+            <button onclick="drawCard(6)">Карточка 7</button>
+            <button onclick="drawCard(7)">Карточка 8</button>
+            <button onclick="drawCard(8)">Карточка 9</button>
+            <button onclick="drawCard(9)">Карточка 10</button>
+            <button onclick="drawCard(10)">Карточка 11</button>
+            <button onclick="drawCard(11)">Карточка 12</button>
+            <button onclick="drawCard(12)">Карточка 13</button>
+            <button onclick="drawCard(13)">Карточка 14</button>
+            <button onclick="drawCard(14)">Карточка 15</button>
+        </div>
+
+        <!-- Блок для кнопок проверки ответов -->
+        <div id="checkButtons" style="display:none;">
+            <button onclick="answerCorrect()">Правильный ответ</button>
+            <button onclick="answerIncorrect()">Неправильный ответ</button>
+            <button onclick="showAnswer()">Показать правильный ответ</button>
+        </div>
+
+    </div>
+
+    <!-- Модальное окно для обмена баллами -->
+    <div id="swapModal" class="swap-modal">
+        <div class="swap-modal-content">
+            <h2>Выберите команду для обмена баллами</h2>
+            <button onclick="swapScores(0)">Команда 1</button>
+            <button onclick="swapScores(1)">Команда 2</button>
+            <button onclick="swapScores(2)">Команда 3</button>
+            <button onclick="closeSwapModal()">Закрыть</button>
+        </div>
+    </div>
+
+    <audio id="clickSound" src="click.mp3"></audio>
+    <audio id="correctSound" src="correct.mp3"></audio>
+    <audio id="incorrectSound" src="incorrect.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
