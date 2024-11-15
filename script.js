@@ -127,6 +127,7 @@ function swapScores(teamIndex) {
     scores[teamIndex] = temp;
     updateScores();
     closeSwapModal();
+    nextTurn();
 }
 
 function playSound(soundId) {
