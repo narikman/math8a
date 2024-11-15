@@ -1,7 +1,10 @@
 let currentTeam = 0;
 let scores = [0, 0, 0];
 let currentCard = null;
+let timer;
+let timeLeft = 90;
 
+// Добавляем усложнение к задачам и перемешиваем их
 const cards = [
     { question: "Решите уравнение: x² - 5x + 6 = 0", answer: "2 и 3", points: 20, meme: "https://cs9.pikabu.ru/post_img/big/2019/12/10/9/1575988681137424675.jpg" },
     { question: "Найдите дискриминант для уравнения: x² + 4x + 4 = 0", answer: "0", points: 20, meme: "https://img-webcalypt.ru/storage/memes/mqwB4mvLlUe4N20VT1zvRarlVTqxhQVP9PdcZaecu4zPsRQofOGwK7tJilIQxEwC6m71RnKILxdHnexpqTfaFj1uHFouJPDzKLpnvDONWzfWOdFTkNjQaKZgKfjUjwIA.jpeg" },
@@ -18,11 +21,15 @@ const cards = [
     { question: "Найдите дискриминант для: 3x² - 6x + 3 = 0", answer: "0", points: 20 },
     { question: "Решите уравнение: x² + x - 12 = 0", answer: "3 и -4", points: 20 },
     { question: "Факторизируйте: x² - 10x + 25", answer: "(x - 5)²", points: 20 }
-];
+].map(card => {
+    if (card.answer) {
+        card.points += Math.floor(Math.random() * 20); // Увеличиваем случайно баллы
+        card.question = `Усложнённое задание: ${card.question} (с дополнительными условиями)`;
+    }
+    return card;
+}).sort(() => Math.random() - 0.5); // Перемешиваем массив
 
-let timer;
-let timeLeft = 90;
-
+// Таймер
 function startTimer() {
     timer = setInterval(function() {
         document.getElementById("timeLeft").textContent = `Осталось времени: ${timeLeft} секунд`;
@@ -39,10 +46,11 @@ function stopTimer() {
     clearInterval(timer);
 }
 
+// Рисование карточки
 function drawCard(index) {
     if (!cards[index] || document.getElementsByTagName('button')[index].disabled) return;
 
-    document.getElementsByTagName('button')[index].disabled = true;  // Делаем кнопку неактивной
+    document.getElementsByTagName('button')[index].disabled = true;
     currentCard = cards[index];
     document.getElementById("question").textContent = currentCard.question;
 
@@ -65,6 +73,7 @@ function drawCard(index) {
     startTimer();
 }
 
+// Функции ответов
 function answerCorrect() {
     playSound("correctSound");
     scores[currentTeam] += currentCard.points;
