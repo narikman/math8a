@@ -21,10 +21,7 @@ const cards = [
     { question: "Найдите дискриминант для: 3x² - 6x + 3 = 0", answer: "0", points: 20 },
     { question: "Решите уравнение: x² + x - 12 = 0", answer: "3 и -4", points: 20 },
     { question: "Факторизируйте: x² - 10x + 25", answer: "(x - 5)²", points: 20 }
-].map(card => {
-    if (card.answer) {
-    return card;
-}).sort(() => Math.random() - 0.5); // Перемешиваем массив
+].sort(() => Math.random() - 0.5); // Перемешиваем массив
 
 // Таймер
 function startTimer() {
