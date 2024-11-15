@@ -23,9 +23,6 @@ const cards = [
     { question: "Факторизируйте: x² - 10x + 25", answer: "(x - 5)²", points: 20 }
 ].map(card => {
     if (card.answer) {
-        card.points += Math.floor(Math.random() * 20); // Увеличиваем случайно баллы
-        card.question = `Усложнённое задание: ${card.question} (с дополнительными условиями)`;
-    }
     return card;
 }).sort(() => Math.random() - 0.5); // Перемешиваем массив
 
