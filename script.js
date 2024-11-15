@@ -56,10 +56,14 @@ function drawCard(index) {
 
     if (currentCard.type === "double") {
         alert("Эта карта удваивает ваши очки!");
-        currentCard.points *= 2;
+        scores[currentTeam] *= 2; // Удваиваем реальные очки команды
+        updateScores(); // Обновляем отображение очков
+        nextTurn(); // Переходим к следующему ходу
+        return;
     } else if (currentCard.type === "swap") {
         alert("Эта карта меняет баллы с другой командой!");
         openSwapModal();
+        return;
     }
 
     if (currentCard.meme) {
@@ -72,6 +76,7 @@ function drawCard(index) {
     document.getElementById("checkButtons").style.display = "block";
     startTimer();
 }
+
 
 // Функции ответов
 function answerCorrect() {
