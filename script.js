@@ -50,7 +50,7 @@ function drawCard(index) {
 
     if (currentCard.type === "double") {
         alert("Эта карта удваивает ваши очки!");
-        scores[currentTeam] *= 2; // Удваиваем реальные очки команды
+        scores[currentTeam] *= 2; // Удваиваем очки текущей команды
         updateScores(); // Обновляем отображение очков
         nextTurn(); // Переходим к следующему ходу
         return;
@@ -70,7 +70,6 @@ function drawCard(index) {
     document.getElementById("checkButtons").style.display = "block";
     startTimer();
 }
-
 
 // Функции ответов
 function answerCorrect() {
@@ -118,6 +117,11 @@ function closeSwapModal() {
 }
 
 function swapScores(teamIndex) {
+    if (teamIndex === currentTeam) {
+        alert("Нельзя обменяться очками с собственной командой!");
+        return;
+    }
+
     let temp = scores[currentTeam];
     scores[currentTeam] = scores[teamIndex];
     scores[teamIndex] = temp;
